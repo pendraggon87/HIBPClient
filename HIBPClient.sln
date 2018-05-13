@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HIBPClient", "HIBPClient\HIBPClient.csproj", "{A81D16EA-80C0-416E-9C0D-C261826D28C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A81D16EA-80C0-416E-9C0D-C261826D28C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81D16EA-80C0-416E-9C0D-C261826D28C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81D16EA-80C0-416E-9C0D-C261826D28C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81D16EA-80C0-416E-9C0D-C261826D28C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA1AD3C6-905C-40A7-B5E7-59AEF5646125}
+	EndGlobalSection
+EndGlobal
