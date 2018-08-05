@@ -17,6 +17,14 @@ namespace HIBPClient
     {
         protected readonly HttpClient client = new HttpClient();
         protected readonly string API_URL = $"https://haveibeenpwned.com/api/v2";
+        public readonly int RATE_LIMIT = 1500;
+        protected DateTime lastCallTime;
+
+        protected void WaitForRateLimit()
+        {
+            if (lastCallTime == null) lastCallTime = DateTime.Now;
+            else while ((DateTime.Now - lastCallTime).Milliseconds < 1500) { }
+        }
 
         public PwnClient(string useragent = "HIBClient.NET", System.Net.SecurityProtocolType tlsTypes = System.Net.SecurityProtocolType.Tls12)
         {
@@ -29,6 +37,7 @@ namespace HIBPClient
 
         public async Task<bool> IsAccountBreached(string email)
         {
+            WaitForRateLimit();
             if (!email.IsValidEmail()) throw new ArgumentException($"{email} is not a valid email address.");
             var response = await this.client.GetAsync($"{API_URL}/breachedaccount/{email}?truncateResponse=true");
             return ((int)response.StatusCode == 200) ? true : false;
@@ -36,6 +45,7 @@ namespace HIBPClient
 
         public async Task<IEnumerable<Breach>> GetBreaches(string domainfilter = null)
         {
+            WaitForRateLimit();
             var uri = $"{API_URL}/breaches";
             if (!String.IsNullOrEmpty(domainfilter)) uri += $"?domain={domainfilter}";
 
@@ -47,6 +57,7 @@ namespace HIBPClient
 
         public async Task<Breach> GetBreach(string name)
         {
+            WaitForRateLimit();
             if (String.IsNullOrEmpty(name)) throw new ArgumentException("A valid breach name must be provided");
 
             var response = await this.client.GetAsync($"{API_URL}/breach/{name}");
